@@ -1,0 +1,376 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  padding: 1em;
+  background-color: #9a7b4f;
+  text-align: center;
+}
+
+h1 {
+  padding: 1em;
+  font-family: 'Patua One', cursive;
+  color: white;
+  text-shadow: 6px 6px #333;
+}
+
+h2 {
+  display: none;
+  text-align: center;
+  font-family: 'Patua One', cursive;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  display: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* Add a grey background color to the top navigation */
+
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgba(238, 238, 238, 0.9);
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+
+.navbar a {
+  font-family: 'Patua One', cursive;
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Style the hamburger menu */
+
+#hamburger {
+  color: #00704A;
+  left: 0;
+  top: 0;
+}
+
+/* Change the color of links on hover */
+
+.mobile-nav-items a {
+  padding-top: 2rem;
+  font-size: 1rem;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.mobile-nav-items a, .mobile .close-mobile-nav {
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+
+.navbar a.active {
+  background-color: #00704A;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Page layout styling */
+
+body {
+  display: flex;
+  flex-direction: column
+}
+
+.column-layout {
+  display: block;
+}
+
+/* Search Box Styling */
+
+.searchBox {
+  float: right;
+}
+
+.searchBox input {
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: .5rem;
+  margin-top: .5rem;
+  vertical-align: bottom;
+}
+
+.searchBox button {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  padding: .3rem;
+  margin-right: 1rem;
+  margin-top: .5rem;
+  background-color: #00704a;
+  color: white;
+}
+
+#pages {
+  display: none;
+}
+
+/* Mobile Navigation */
+
+.mobile {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: #00704a;
+  opacity: 0.8;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.mobile-nav {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.mobile-nav-items {
+  list-style: none;
+}
+
+.mobile .close-mobile-nav {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 2rem;
+}
+
+.mobile-nav-items a:hover, .mobile .close-mobile-nav:hover {
+  color: gray;
+}
+
+.fa-bars {
+  color: white;
+}
+
+/*styling on landing page */
+
+.about-container-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(138, 188, 159, 0.5);
+  padding: 2em 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.video-container {
+  height: 0;
+  width: 100%;
+  position: relative;
+  padding-bottom: 50%;
+}
+
+.video {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.mission {
+  background-color: #edf4f0;
+  padding: 3em;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin: 0.75em 0;
+  line-height: 2;
+}
+
+.mission h2, .description h2, .authorInfo h2 {
+  display: block;
+}
+
+/* Dropdown buttons for mobile and tablet */
+
+.mobile-dropdown {
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.mobile-dropdown button {
+  border: none;
+  background-color: #00704A;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-top: 0.5rem;
+  width: 100%;
+  font-family: 'Patua One', cursive;
+}
+
+.mobile-dropdown button:hover, .mobile-dropdown button:active {
+  background-color: rgba(138, 188, 159, 0.5)
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Cards styling */
+
+.card {
+  flex: 0 0 150px;
+  background-color: white;
+  margin: .5rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.card ul {
+  padding: .5rem 1rem;
+  text-align: center;
+  list-style-type: none;
+}
+
+.card h3 {
+  font-family: 'Patua One', cursive;
+  padding: .5rem 1rem;
+  text-align: center;
+}
+
+/* Categories and Sort by section styling*/
+
+section {
+  padding: 1em;
+}
+
+.interactiveSections {
+  display: none;
+  justify-content: center;
+  background-color: rgba(138, 188, 159, 0.5);
+}
+
+/* Footer styling */
+
+footer {
+  text-align: center;
+  font-size: small;
+}
+
+/* Styling for devices bigger than moblie phones */
+
+@media (min-width: 598px) {
+  .card {
+    flex: 0 0 150px;
+  }
+}
+
+/* Styling for devices bigger than tablets */
+
+@media (min-width: 768px) {
+  header {
+    padding: 3em;
+    background: url("../img/beans.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+  }
+  #pages {
+    display: block;
+  }
+  #hamburger {
+    display: none;
+  }
+  h1 {
+    font-size: 48px;
+  }
+}
+
+/* Styling for bigger tablets such as iPad pros */
+
+@media (min-width: 992px) {
+  .interactiveSections {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: white;
+  }
+  .column-layout {
+    display: flex;
+  }
+  .result-section {
+    width: 100%;
+  }
+  img {
+    width: 180px;
+    height: 180px;
+  }
+  #pages {
+    display: block;
+  }
+  #hamburger {
+    display: none;
+  }
+  h2 {
+    display: block;
+  }
+  .mobile-dropdown {
+    display: none;
+  }
+}
+
+/* Styling for devices bigger larger tablets */
+
+@media (min-width: 1200px) {
+  img {
+    width: 250px;
+    height: 250px;
+  }
+}
