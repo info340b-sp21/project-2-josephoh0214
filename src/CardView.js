@@ -32,9 +32,5 @@ export function CardList(props) {
     let cards = dataset.map((drink) => {
         return <Card theDrink={drink} key={drink.name} />
     });
-    return (
-        <div>
-            {cards}
-        </div>
-    );
+    return cards;
 }

@@ -1,4 +1,5 @@
 import { CardView } from './CardView';
+import { useState } from 'react';
 
 export function ModifyData(props) {
     let dataset = props.dataset;
@@ -7,8 +8,8 @@ export function ModifyData(props) {
             <div className="interactiveSections">
                 <Filtering />
                 <Sorting />
-                <CardView dataset={dataset}/>
             </div>
+            <CardView dataset={dataset} />
         </div>
     );
 }
@@ -53,4 +54,4 @@ export function Sorting() {
             </form>
         </section>
     );
-} 
+}

@@ -104,7 +104,7 @@ nav {
 
 /* Page layout styling */
 
-body {
+#root {
   display: flex;
   flex-direction: column;
 }

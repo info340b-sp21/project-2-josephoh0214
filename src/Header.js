@@ -13,15 +13,27 @@ export function Header() {
 }
 
 export function NavBar() {
-    return (
-        <div className="navbar">
-            <div id="pages">
-                <a className="active" href="">Main</a>
-                <a href="">About</a>
+    if (window.innerWidth <= 768) {
+        return (
+            <div className="mobile">
+                <a href="#" className="close-mobile-nav">&times;</a>
+                <ul class="mobile-nav">
+                    <li className="mobile-nav-items"><a href="">Main</a></li>
+                    <li className="mobile-nav-items"><a href="">About</a></li>
+                </ul>
             </div>
-            <a><i id="hamburger" className="fa fa-bars fa-lg"></i></a>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className="navbar">
+                <div id="pages">
+                    <a className="active" href="">Main</a>
+                    <a href="">About</a>
+                </div>
+                <a><i id="hamburger" className="fa fa-bars fa-lg"></i></a>
+            </div>
+        );
+    }
 }
 
 export function Title() {
@@ -34,7 +46,7 @@ export function SearchBox() {
     return (
         <div className="searchBox" role="search">
             <input aria-label="drink name" type="text" placeholder="Search Your Drink!" />
-            <button aria-label="Search"><i class="fas fa-search"></i></button>
+            <button aria-label="Search"><i className="fas fa-search"></i></button>
         </div>
     );
 }
