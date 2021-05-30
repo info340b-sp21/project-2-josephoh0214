@@ -13,9 +13,10 @@ export function CardView(props) {
 export function Card(props) {
     let drink = props.theDrink;
     let drinkName = drink.name.replaceAll('_', " ");
+    let imgLocation = "img/" + drink.type + "-" + drink.name + ".webp";
     return (
         <div className="card">
-            <img src="./img/Hot_coffee-Cappuccino.webp" alt={drinkName} />
+            <img src={imgLocation} alt={drinkName} />
             <h3>{drinkName}</h3>
             <ul>
                 <li>Calories: {drink.calories}</li>
