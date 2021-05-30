@@ -1,9 +1,12 @@
+import { CardView } from './CardView';
+
 export function ModifyData() {
     return (
         <div className="column-layout">
             <div className="interactiveSections">
                 <Filtering />
                 <Sorting />
+                <CardView />
             </div>
         </div>
     );
