@@ -1,12 +1,13 @@
 import { CardView } from './CardView';
 
-export function ModifyData() {
+export function ModifyData(props) {
+    let dataset = props.dataset;
     return (
         <div className="column-layout">
             <div className="interactiveSections">
                 <Filtering />
                 <Sorting />
-                <CardView />
+                <CardView dataset={dataset}/>
             </div>
         </div>
     );
@@ -18,7 +19,7 @@ export function Filtering() {
             <h2>Categories</h2>
             <form>
                 <select className="category" name="filter">
-                    <option value="All" selected>All</option>
+                    <option value="All" defaultValue>All</option>
                     <option value="Hot_coffee">Hot coffees</option>
                     <option value="Hot_tea">Hot Teas</option>
                     <option value="Hot_drink">Hot Drinks</option>
@@ -39,17 +40,17 @@ export function Sorting() {
             <form className="sortOptions">
                 <input type="radio" name="sortOrder" value="caloriesHigh"
                     aria-label="Calories from high to low" />Calories ▼
-                        <input type="radio" name="sortOrder" value="caloriesLow"
+                <input type="radio" name="sortOrder" value="caloriesLow"
                     aria-label="Calories from low to high" />Calories ▲
-                        <input type="radio" name="sortOrder" value="caffieneHigh"
+                <input type="radio" name="sortOrder" value="caffieneHigh"
                     aria-label="Caffeine from high to low" />Caffiene ▼
-                        <input type="radio" name="sortOrder" value="caffieneLow"
+                <input type="radio" name="sortOrder" value="caffieneLow"
                     aria-label="Caffeine from low to high" />Caffiene ▲
-                        <input type="radio" name="sortOrder" value="proteinHigh"
+                <input type="radio" name="sortOrder" value="proteinHigh"
                     aria-label="Protein from high to low" />Protein ▼
-                        <input type="radio" name="sortOrder" value="proteinLow"
+                <input type="radio" name="sortOrder" value="proteinLow"
                     aria-label="Protein from low to high" />Protein ▲
-                    </form>
+            </form>
         </section>
     );
 } 

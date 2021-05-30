@@ -4,12 +4,13 @@ import { ModifyData } from './ModifyData';
 import { Footer } from './Footer';
 
 
-function App() {
+function App(props) {
+  const dataset = props.data.drinks;
   return (
     <div>
       <Header />
       <main>
-      <ModifyData />
+      <ModifyData dataset={dataset}/>
       </main>
       <Footer />
     </div>

@@ -3,6 +3,7 @@ export function Header() {
         <div>
             <nav>
                 <NavBar />
+                <SearchBox />
             </nav>
             <header>
                 <Title />
@@ -26,5 +27,14 @@ export function NavBar() {
 export function Title() {
     return (
         <h1>All About Your Starbucks Drinks</h1>
+    );
+}
+
+export function SearchBox() {
+    return (
+        <div className="searchBox" role="search">
+            <input aria-label="drink name" type="text" placeholder="Search Your Drink!" />
+            <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
     );
 }
