@@ -1,14 +1,37 @@
 import { SearchBox } from "./Header";
 
 export function CardView(props) {
-    let dataset = props.dataset;
-    let input = props.searchInput;
-    console.log(input);
+    const { dataset, sortingCategory, isAscending, filterType } = props;
+    let drinks = dataset;
+
+    if (filterType !== "All") {
+        drinks = drinks.filter(drink => {
+            return drink.type === filterType;
+        })
+    } else {
+        drinks = dataset;
+    }
+
+    if (sortingCategory !== "") {
+        drinks.sort((a, b) => {
+            if (isAscending) {
+                return parseInt(a[sortingCategory]) - parseInt(b[sortingCategory]);
+            } else {
+                return parseInt(b[sortingCategory]) - parseInt(a[sortingCategory]);
+            }  
+        });
+    }
+
+    const cards = drinks.map((drink) => {
+        return <Card theDrink={drink} key={drink.name} />
+    });
+
+
     return (
         <section className="result-section">
             <h2>Drinks (Grande)</h2>
             <div className="container">
-                <CardList searchInput={input} dataset={dataset} />
+                {cards}
             </div>
         </section>
     );
@@ -29,22 +52,4 @@ export function Card(props) {
             </ul>
         </div>
     );
-}
-
-export function CardList(props) {
-    const searchResult = (query) => {
-       dataset = dataset.filter((drink) => {
-            return drink.name.includes(query);
-        }) 
-    }
-    <SearchBox callback={searchResult} />
-    let dataset = props.dataset;
-    let input = props.searchInput;
-    console.log(dataset);
-    console.log(input);
-    let cards = dataset.map((drink) => {
-        return <Card theDrink={drink} key={drink.name} />
-    });
-
-    return cards;
 }

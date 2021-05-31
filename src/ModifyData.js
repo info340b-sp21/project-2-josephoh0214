@@ -3,64 +3,96 @@ import { useState } from 'react';
 
 
 export function ModifyData(props) {
-    let dataset = props.dataset;
+    const dataset = props.dataset;
+    const [ sortingCategory, setSortingCategory ] = useState('');
+    const [ isAscending, setIsAscending ] = useState(true);
+    const [ filterType, setFilterType ] = useState('All');
 
     return (
         <div className="column-layout">
             <div className="interactiveSections">
-                <Filtering />
-                <Sorting />
+                <Categories dataset ={dataset} setFilterType={setFilterType} />
+                <Sorting setSortingCategory={setSortingCategory} setIsAscending={setIsAscending} />
             </div>
-            <CardView searchInput={""} dataset={dataset} />
+            <CardView dataset={dataset} sortingCategory={sortingCategory} isAscending={isAscending} filterType={filterType}/>
         </div>
     );
 }
 
-export function Filtering() {
-    const handleChange = (event) => {
-        let selected = event.target.value;
-        return console.log(selected);
-    }
+// Categories
+export function Categories(props) {
+    const { dataset, setFilterType } = props;
+
+    const seen = new Set();
+    let options = dataset.filter((drink) => {
+        if (!seen.has(drink.type)) {
+            seen.add(drink.type);
+           
+            return true;
+        }
+        return false;
+    }).map((drink) => {
+        const name = drink.type.split("_").map((name) => {
+            return name.charAt(0).toUpperCase() + name.slice(1);
+        }).join(" ");
+        const option = <option value={drink.type}>{name}</option>
+        return option;
+    });
+
+    const [ category, setCategory ] = useState('All');
+
     return (
         <section className="filter-section">
             <h2>Categories</h2>
             <form>
-                <select className="category" name="filter" onChange={type => handleChange(type)}>
-                    <option defaultValue="All">All</option>
-                    <option value="Hot_coffee">Hot coffees</option>
-                    <option value="Hot_tea">Hot Teas</option>
-                    <option value="Hot_drink">Hot Drinks</option>
-                    <option value="Frappuccino">Frappuccino</option>
-                    <option value="Cold_coffee">Cold Coffees</option>
-                    <option value="Cold_teas">Iced Teas</option>
-                    <option value="Cold_drinks">Cold Drinks</option>
+                <select 
+                    className="category" 
+                    name="filter"
+                    value={category} 
+                    onChange={(e) => {
+                        const filterType = e.target.value
+                        setCategory(filterType);
+                        setFilterType(filterType);
+                    }} 
+                >
+                    <option value="All" defaultValue>All</option>
+                    {options}
                 </select>
             </form>
         </section>
     );
 }
 
-export function Sorting() {
-    const handleChange = (event) => {
-        let selected = event.target.value;
-        return console.log(selected);
+// Sort By
+export function Sorting(props) {
+    const { setSortingCategory, setIsAscending } = props;
+
+    const onSortOptionChange = (e) => {
+        setSortingCategory(e.target.value);
     }
+
+    const onSortOrderChange = (e) => {
+        const isAsc = String(e.target.value).toLowerCase() == "true";
+        setIsAscending(isAsc);
+    }
+
     return (
         <section className="sortBy-section">
             <h2>Sort By</h2>
-            <form className="sortOptions" onChange={sort => handleChange(sort)}>
-                <input type="radio" name="sortOrder" value="caloriesHigh"
-                    aria-label="Calories from high to low" />Calories ▼<br />
-                <input type="radio" name="sortOrder" value="caloriesLow"
-                    aria-label="Calories from low to high" />Calories ▲<br />
-                <input type="radio" name="sortOrder" value="caffieneHigh"
-                    aria-label="Caffeine from high to low" />Caffiene ▼<br />
-                <input type="radio" name="sortOrder" value="caffieneLow"
-                    aria-label="Caffeine from low to high" />Caffiene ▲<br />
-                <input type="radio" name="sortOrder" value="proteinHigh"
-                    aria-label="Protein from high to low" />Protein ▼<br />
-                <input type="radio" name="sortOrder" value="proteinLow"
-                    aria-label="Protein from low to high" />Protein ▲<br />
+            <form className="sortOptions">
+                <input type="radio" name="sortOrder" value="calories" onChange={onSortOptionChange}
+                    aria-label="Calories" />Calories
+                <input type="radio" name="sortOrder" value="caffeine" onChange={onSortOptionChange}
+                    aria-label="Caffeine" />Caffiene
+                <input type="radio" name="sortOrder" value="protein" onChange={onSortOptionChange}
+                    aria-label="Protein" />Protein
+            </form>
+
+            <form className="sortOptions">
+                <input type="radio" name="sortOrder" value="true" onChange={onSortOrderChange}
+                        aria-label="low to high" />▲
+                <input type="radio" name="sortOrder" value="false" onChange={onSortOrderChange}
+                        aria-label="high to low" />▼
             </form>
         </section>
     );
