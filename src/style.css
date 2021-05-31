@@ -292,6 +292,7 @@ section {
 }
 
 .interactiveSections {
+  flex: 1;
   display: none;
   justify-content: center;
   background-color: rgba(138, 188, 159, 0.5);
