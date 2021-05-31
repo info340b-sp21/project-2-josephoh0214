@@ -18,11 +18,6 @@ export function Header(prop) {
 export function NavBar() {
     if (window.innerWidth <= 768) {
         // Navigation bar for devices with smaller screens
-        const open = () => {
-            let mobileMenu = document.querySelector('.mobile');
-            mobileMenu.style.display = "flex";
-            mobileMenu.style.width = "40%";
-        }
         return (
             <div className="mobile">
                 <a href="" className="close-mobile-nav" >&times;</a>
@@ -39,7 +34,7 @@ export function NavBar() {
                     <a className="active" href="">Main</a>
                     <a href="">About</a>
                 </div>
-                <a><i id="hamburger" className="fa fa-bars fa-lg" onClick={open}></i></a>
+                <a><i id="hamburger" className="fa fa-bars fa-lg"></i></a>
             </div>
         );
     }
