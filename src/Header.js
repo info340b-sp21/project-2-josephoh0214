@@ -6,7 +6,6 @@ export function Header(prop) {
         <div>
             <nav>
                 <NavBar />
-                <SearchBox dataset={prop.dataset} />
             </nav>
             <header>
                 <Title />
@@ -43,24 +42,5 @@ export function NavBar() {
 export function Title() {
     return (
         <h1>All About Your Starbucks Drinks</h1>
-    );
-}
-
-export function SearchBox(prop) {
-    const [inputtedValue, setInputtedValue] = useState("");
-    const handleChange = (event) => {
-        let value = event.target.value;
-        setInputtedValue(value.toLowerCase());
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        prop.callback(inputtedValue);
-        console.log("submitted - " + inputtedValue)
-    }
-    return (
-        <form className="searchBox" role="search" onSubmit={handleSubmit}>
-            <input value={inputtedValue} onChange={handleChange} aria-label="drink name" type="text" placeholder="Search Your Drink!" />
-            <button aria-label="Search"><i className="fas fa-search"></i></button>
-        </form>
     );
 }
