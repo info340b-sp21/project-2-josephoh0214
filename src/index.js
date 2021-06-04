@@ -5,5 +5,4 @@ import App from './App';
 import SAMPLE_DATA from './nutritionData.json';
 import firebase from 'firebase/app';
 
-ReactDOM.render(<App data = { SAMPLE_DATA }/>, document.getElementById('root'));
-
+ReactDOM.render(<App data={SAMPLE_DATA} />, document.getElementById('root'));

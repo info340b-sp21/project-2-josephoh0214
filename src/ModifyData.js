@@ -1,7 +1,8 @@
+import React from 'react';
 import { CardView } from './CardView';
 import { useState } from 'react';
 
-
+// provides users with filtering/sorting options 
 export function ModifyData(props) {
     const dataset = props.dataset;
     const [sortingCategory, setSortingCategory] = useState('');
@@ -19,7 +20,7 @@ export function ModifyData(props) {
     );
 }
 
-// Categories
+// Categories feature
 export function Categories(props) {
     const { dataset, setFilterType } = props;
 
@@ -63,7 +64,7 @@ export function Categories(props) {
     );
 }
 
-// Sort By
+// Sort By feature
 export function Sorting(props) {
     const { setSortingCategory, setIsAscending } = props;
 

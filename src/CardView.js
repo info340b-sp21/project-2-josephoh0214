@@ -1,5 +1,6 @@
-import { SearchBox } from "./Header";
+import React from 'react';
 
+//Renders a list of cards
 export function CardView(props) {
     const { dataset, sortingCategory, isAscending, filterType } = props;
     let drinks = dataset;
@@ -18,7 +19,7 @@ export function CardView(props) {
                 return parseInt(a[sortingCategory]) - parseInt(b[sortingCategory]);
             } else {
                 return parseInt(b[sortingCategory]) - parseInt(a[sortingCategory]);
-            }  
+            }
         });
     }
 
@@ -37,6 +38,7 @@ export function CardView(props) {
     );
 }
 
+// Generates cards
 export function Card(props) {
     let drink = props.theDrink;
     let drinkName = drink.name.replaceAll('_', " ");
