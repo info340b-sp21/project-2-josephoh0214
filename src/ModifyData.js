@@ -73,7 +73,7 @@ export function Sorting(props) {
     }
 
     const onSortOrderChange = (e) => {
-        const isAsc = String(e.target.value).toLowerCase() == "true";
+        const isAsc = String(e.target.value).toLowerCase() === "true";
         setIsAscending(isAsc);
     }
 

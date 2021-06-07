@@ -5,6 +5,7 @@ import { ModifyData } from './ModifyData';
 import { Footer } from './Footer';
 import { AboutPage } from './About'
 import { Favorites } from './Favorites'
+import { RenderLogin } from './SignIn';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 
@@ -18,7 +19,7 @@ function App(props) {
           <Switch>
 
             <Route exact path="/">
-              <Mobile />
+              {/* <MobileDropDownMenu /> */}
               <ModifyData dataset={dataset} />
             </Route>
 
@@ -28,6 +29,10 @@ function App(props) {
 
             <Route exact path="/favorites">
               <Favorites />
+            </Route>
+
+            <Route exact path="/account">
+              <RenderLogin />
             </Route>
 
             <Route>
