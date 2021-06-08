@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import {useState} from 'react'
 
 //Renders a list of cards
 export function CardView(props) {
@@ -24,7 +26,7 @@ export function CardView(props) {
     }
 
     const cards = drinks.map((drink) => {
-        return <Card theDrink={drink} key={drink.name} />
+        return <Card fav={props.fav} theDrink={drink} key={drink.name} />
     });
 
 
@@ -38,11 +40,24 @@ export function CardView(props) {
     );
 }
 
+
 // Generates cards
 export function Card(props) {
     let drink = props.theDrink;
+
     let drinkName = drink.name.replaceAll('_', " ");
     let imgLocation = "img/" + drink.type + "-" + drink.name + ".webp";
+
+    const addFavorite = (e) => { 
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const favorites = firebase.database().ref(user.displayName);
+        
+        const favList = props.fav;
+        favList.push(drink.name);
+        favorites.child('favorites').set(favList)
+    }
+
     return (
         <div className="card">
             <img src={imgLocation} alt={drinkName} />
@@ -51,6 +66,9 @@ export function Card(props) {
                 <li>Calories: {drink.calories}</li>
                 <li>Caffeine(g): {drink.caffeine}</li>
                 <li>Protein(g): {drink.protein}</li>
+                <button type='button' onClick = {addFavorite}>
+                    Add to Favorites
+                </button>
             </ul>
         </div>
     );

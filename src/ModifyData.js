@@ -15,7 +15,7 @@ export function ModifyData(props) {
                 <Categories dataset={dataset} setFilterType={setFilterType} />
                 <Sorting setSortingCategory={setSortingCategory} setIsAscending={setIsAscending} />
             </div>
-            <CardView dataset={dataset} sortingCategory={sortingCategory} isAscending={isAscending} filterType={filterType} />
+            <CardView fav={props.fav} dataset={dataset} sortingCategory={sortingCategory} isAscending={isAscending} filterType={filterType} />
         </div>
     );
 }
