@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
-import {useState} from 'react'
+import { useState } from 'react'
 
 //Renders a list of cards
 export function CardView(props) {
@@ -48,28 +48,43 @@ export function Card(props) {
     let drinkName = drink.name.replaceAll('_', " ");
     let imgLocation = "img/" + drink.type + "-" + drink.name + ".webp";
 
-    const addFavorite = (e) => { 
+    const user = firebase.auth().currentUser;
+
+    const addFavorite = (e) => {
         e.preventDefault();
-        const user = firebase.auth().currentUser;
         const favorites = firebase.database().ref(user.displayName);
-        
+
         const favList = props.fav;
         favList.push(drink.name);
         favorites.child('favorites').set(favList)
     }
 
-    return (
-        <div className="card">
-            <img src={imgLocation} alt={drinkName} />
-            <h3>{drinkName}</h3>
-            <ul>
-                <li>Calories: {drink.calories}</li>
-                <li>Caffeine(g): {drink.caffeine}</li>
-                <li>Protein(g): {drink.protein}</li>
-                <button type='button' onClick = {addFavorite}>
-                    Add to Favorites
-                </button>
-            </ul>
-        </div>
-    );
+    if (user != null) {
+        return (
+            <div className="card">
+                <img src={imgLocation} alt={drinkName} />
+                <h3>{drinkName}</h3>
+                <ul>
+                    <li>Calories: {drink.calories}</li>
+                    <li>Caffeine(g): {drink.caffeine}</li>
+                    <li>Protein(g): {drink.protein}</li>
+                    <button className="favButton" type='button' onClick={addFavorite} aria-label="Save this drink to personal list">
+                        Add to Favorites
+                    </button>
+                </ul>
+            </div>
+        )
+    } else {
+        return (
+            <div className="card">
+                <img src={imgLocation} alt={drinkName} />
+                <h3>{drinkName}</h3>
+                <ul>
+                    <li>Calories: {drink.calories}</li>
+                    <li>Caffeine(g): {drink.caffeine}</li>
+                    <li>Protein(g): {drink.protein}</li>
+                </ul>
+            </div>
+        );
+    }
 }

@@ -1,4 +1,4 @@
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useState, useEffect } from 'react';
@@ -51,7 +51,7 @@ export function RenderLogin() {
     } else {
         return (
             <div className="signout">
-                <h2>LOGOUT</h2>
+                <h2>Logged in as {user.displayName}</h2>
                 <button onClick={handleLogout}>Sign Out</button>
             </div>
         );

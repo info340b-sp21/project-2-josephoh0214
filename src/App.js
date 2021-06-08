@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { Header } from './Header';
-import { Mobile, MobileDropDownMenu } from './MoblieDropDownMenu';
 import { ModifyData } from './ModifyData';
 import { Footer } from './Footer';
 import { AboutPage } from './About'
@@ -35,7 +34,6 @@ function App(props) {
         <main>
           <Switch>
             <Route exact path="/">
-              {/* <MobileDropDownMenu /> */}
               <ModifyData fav={favState} dataset={dataset} />
             </Route>
 

@@ -43,7 +43,7 @@ export function Account() {
 
 export function Title() {
     return (
-        <h1>
+        <h1 className="title">
             All About Your Starbucks Drinks
         </h1>
     );
