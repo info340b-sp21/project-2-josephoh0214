@@ -1,4 +1,4 @@
- import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useState, useEffect } from 'react';
@@ -57,4 +57,3 @@ export function RenderLogin() {
         );
     }
 }
-

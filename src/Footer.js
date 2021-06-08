@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Author Info
 export function Footer() {
     return (
         <footer>

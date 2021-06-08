@@ -7,6 +7,7 @@ export function CardView(props) {
     const { dataset, sortingCategory, isAscending, filterType } = props;
     let drinks = dataset;
 
+    // Filtering feature
     if (filterType !== "All") {
         drinks = drinks.filter(drink => {
             return drink.type === filterType;
@@ -15,6 +16,7 @@ export function CardView(props) {
         drinks = dataset;
     }
 
+    // Sorting feature
     if (sortingCategory !== "") {
         drinks.sort((a, b) => {
             if (isAscending) {
@@ -25,10 +27,10 @@ export function CardView(props) {
         });
     }
 
+    // Change to array of cards
     const cards = drinks.map((drink) => {
         return <Card fav={props.fav} theDrink={drink} key={drink.name} />
     });
-
 
     return (
         <section className="result-section">
@@ -39,7 +41,6 @@ export function CardView(props) {
         </section>
     );
 }
-
 
 // Generates cards
 export function Card(props) {
@@ -59,6 +60,7 @@ export function Card(props) {
         favorites.child('favorites').set(favList)
     }
 
+    // Checks if a user is logged in to show/hide a button to add drinks to favorites
     if (user != null) {
         return (
             <div className="card">

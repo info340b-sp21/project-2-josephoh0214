@@ -12,20 +12,20 @@ import firebase from 'firebase/app';
 function App(props) {
   const dataset = props.data.drinks;
   const [favState, setFavState] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
 
-  useEffect(() => {
-    let authUnregFunc = firebase.auth().onAuthStateChanged((firebaseUser) => {
-      if(firebaseUser){ //firebaseUser defined: is logged in
-          setIsLoggedIn(true);
-          //do something with firebaseUser (e.g. assign to a state variable)
-      }
-      else { //firebaseUser undefined: is not logged in
-          setIsLoggedIn(false);
-      }
-    });
-  },[]);
+  // useEffect(() => {
+  //   let authUnregFunc = firebase.auth().onAuthStateChanged((firebaseUser) => {
+  //     if(firebaseUser){ //firebaseUser defined: is logged in
+  //         setIsLoggedIn(true);
+  //         //do something with firebaseUser (e.g. assign to a state variable)
+  //     }
+  //     else { //firebaseUser undefined: is not logged in
+  //         setIsLoggedIn(false);
+  //     }
+  //   });
+  // },[]);
 
   return (
     <BrowserRouter>
@@ -42,7 +42,7 @@ function App(props) {
             </Route>
 
             <Route exact path="/favorites">
-              <Favorites setFavState={setFavState}  dataset={dataset} isLoggedIn={isLoggedIn}/>
+              <Favorites setFavState={setFavState}  dataset={dataset} />
             </Route>
 
             <Route exact path="/account">
