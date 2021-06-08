@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { RenderLogin } from './SignIn';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Card } from './CardView';
 
 export function Favorites(props) {
@@ -10,10 +9,9 @@ export function Favorites(props) {
     let drinks = dataset;
 
     const [favorites, setFavorites] = useState([]);
+
     const user = firebase.auth().currentUser;
-    
     let displayName = 'intended';
-    
     if (user) displayName = user.displayName;
     const favorite = firebase.database().ref(displayName);
 
