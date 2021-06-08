@@ -61,21 +61,36 @@ export function Card(props) {
     }
 
     // Checks if a user is logged in to show/hide a button to add drinks to favorites
-    if (user != null) {
-        return (
-            <div className="card">
-                <img src={imgLocation} alt={drinkName} />
-                <h3>{drinkName}</h3>
-                <ul>
-                    <li>Calories: {drink.calories}</li>
-                    <li>Caffeine(g): {drink.caffeine}</li>
-                    <li>Protein(g): {drink.protein}</li>
-                    <button className="favButton" type='button' onClick={addFavorite} aria-label="Save this drink to personal list">
-                        Add to Favorites
+    if (user != null ) {
+        // checks if a card is in favorites page and if it is add-to-favorite-button will be hidden
+        if (props.added) {
+            return (
+                <div className="card">
+                    <img src={imgLocation} alt={drinkName} />
+                    <h3>{drinkName}</h3>
+                    <ul>
+                        <li>Calories: {drink.calories}</li>
+                        <li>Caffeine(g): {drink.caffeine}</li>
+                        <li>Protein(g): {drink.protein}</li>
+                    </ul>
+                </div>
+            );
+        } else {
+            return (
+                <div className="card">
+                    <img src={imgLocation} alt={drinkName} />
+                    <h3>{drinkName}</h3>
+                    <ul>
+                        <li>Calories: {drink.calories}</li>
+                        <li>Caffeine(g): {drink.caffeine}</li>
+                        <li>Protein(g): {drink.protein}</li>
+                        <button className="favButton" type='button' onClick={addFavorite} aria-label="Save this drink to personal list">
+                            Add to Favorites
                     </button>
-                </ul>
-            </div>
-        )
+                    </ul>
+                </div>
+            )
+        }
     } else {
         return (
             <div className="card">

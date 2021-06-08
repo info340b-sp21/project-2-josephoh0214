@@ -39,7 +39,7 @@ export function Favorites(props) {
                 cards = drinks.filter((drink) => {
                     return favoriteDrinks.indexOf(drink.name) !== -1;
                 }).map((drink) => {
-                    return <Card fav={props.fav} theDrink={drink} key={drink.name} />
+                    return <Card fav={props.fav} theDrink={drink} key={drink.name} added={true}/>
                 });
             }
             return (
