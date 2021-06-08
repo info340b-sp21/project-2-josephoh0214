@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './Header';
 import { ModifyData } from './ModifyData';
 import { Footer } from './Footer';
@@ -26,7 +26,7 @@ function App(props) {
             </Route>
 
             <Route exact path="/favorites">
-              <Favorites setFavState={setFavState}  dataset={dataset} />
+              <Favorites setFavState={setFavState} dataset={dataset} />
             </Route>
 
             <Route exact path="/account">
